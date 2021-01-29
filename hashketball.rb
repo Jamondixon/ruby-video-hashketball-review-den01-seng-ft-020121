@@ -5,7 +5,7 @@ def game_hash
     home: {
       team_name: "Brooklyn Nets",
       colors: ["Black", "White"],
-      players: [
+      players: {
         {
           player_name: "Alan Anderson",
           number: 0,
@@ -61,7 +61,7 @@ def game_hash
           blocks: 11,
           slam_dunks: 1
         }
-      ]
+      }
     },
     away: {
       team_name: "Charlotte Hornets",
@@ -122,15 +122,11 @@ def game_hash
           blocks: 5,
           slam_dunks: 12
         }
-      ]
+      }
     }
   }
 end
 
-def num_points_scored(player_n)
-  game_hash.each do |location, team|
-    team[:players].each do |player|
-      return player[:points] if player[:player_name] == player_n
-    end
-  end
+def num_points_scored(player_name)
+    players = game_hash[:home][:players].merge(game_hash[:away][:players])
 end
